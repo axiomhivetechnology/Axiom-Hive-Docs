@@ -77,6 +77,18 @@ GitHub API rate limits apply. Use `GITHUB_TOKEN` environment variable for higher
 **Large PRs**
 PRs with >300 files are summarized automatically. Adjust the threshold in `scripts/generate-report.py`.
 
+## Compliance
+
+This skill is designed with privacy and safety in mind:
+
+- **Data minimization:** No personal data is requested or stored by default.
+- **Ephemeral processing:** Prompts, diffs, and reports are processed in memory only.
+- **GDPR-aligned:** Lawful basis mapping, data subject rights support, and DPIA assessment documented.
+- **NIST-aligned:** Privacy Framework and Cybersecurity Framework controls implemented.
+- **EU AI Act:** Classified as minimal risk; transparency and human oversight maintained.
+
+See `docs/compliance.md` for the full compliance framework.
+
 ## License
 
 MIT

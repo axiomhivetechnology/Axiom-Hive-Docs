@@ -1,0 +1,67 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "PR Review Report",
+  "description": "Structured output schema for axiom-hive-code-review",
+  "type": "object",
+  "required": ["repo", "pr_number", "overall"],
+  "properties": {
+    "repo": {
+      "type": "string",
+      "description": "GitHub repository in owner/repo format"
+    },
+    "pr_number": {
+      "type": "integer",
+      "description": "Pull request number"
+    },
+    "files_changed": {
+      "type": "integer",
+      "description": "Number of files changed in the PR"
+    },
+    "summary": {
+      "type": "string",
+      "description": "2-3 sentence assessment of the PR"
+    },
+    "findings": {
+      "type": "array",
+      "description": "List of findings grouped by severity",
+      "items": {
+        "type": "object",
+        "required": ["severity", "confidence", "category", "message"],
+        "properties": {
+          "severity": {
+            "type": "string",
+            "enum": ["critical", "major", "minor", "info", "suggestion"]
+          },
+          "confidence": {
+            "type": "string",
+            "enum": ["high", "medium", "low"]
+          },
+          "category": {
+            "type": "string",
+            "description": "security, performance, style, logic, general"
+          },
+          "message": {
+            "type": "string",
+            "description": "Short description of the finding"
+          },
+          "fix": {
+            "type": "string",
+            "description": "Suggested fix if applicable"
+          }
+        }
+      }
+    },
+    "suggested_fixes": {
+      "type": "array",
+      "description": "Prioritized list of suggested fixes for critical and major findings",
+      "items": {
+        "type": "string"
+      }
+    },
+    "overall": {
+      "type": "string",
+      "enum": ["Approve", "Request Changes", "Comment"],
+      "description": "Overall assessment of the PR"
+    }
+  }
+}

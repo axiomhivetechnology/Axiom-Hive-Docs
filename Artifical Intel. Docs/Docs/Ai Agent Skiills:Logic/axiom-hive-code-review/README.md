@@ -77,6 +77,17 @@ GitHub API rate limits apply. Use `GITHUB_TOKEN` environment variable for higher
 **Large PRs**
 PRs with >300 files are summarized automatically. Adjust the threshold in `scripts/generate-report.py`.
 
+## Prompt Engineering and Safety
+
+This skill uses a layered prompt architecture:
+
+- **Contextual Guidance:** Flexible instructions that shape model behavior
+- **Deterministic Overrides:** Non-negotiable safety rules that cannot be overridden
+- **Structured Output Enforcement:** JSON Schema for machine-readable reports
+- **Positive Reinforcement:** Task framing that reduces false-positive refusals
+
+See `docs/prompt-engineering.md` for the full architecture and `docs/refusal-troubleshooting.md` for handling refusal issues.
+
 ## Compliance
 
 This skill is designed with privacy and safety in mind:

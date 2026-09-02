@@ -2,6 +2,7 @@
 import sys
 import json
 import re
+import argparse
 from pathlib import Path
 
 RUBRIC_PATH = Path(__file__).resolve().parent.parent / "assets" / "severity-rubric.json"
@@ -101,18 +102,60 @@ def render_report(repo: str, pr_number: str, diff_text: str) -> str:
     lines.append("")
     return "\n".join(lines)
 
+def render_json(repo: str, pr_number: str, diff_text: str) -> dict:
+    rubric = load_rubric()
+    findings = score_diff(diff_text, rubric)
+    grouped = group_by_severity(findings)
+    changed_files = len(re.findall(r"^\+\+\+ ", diff_text, re.MULTILINE))
+
+    all_findings = []
+    for severity in ["critical", "major", "minor", "info", "suggestion"]:
+        items = grouped.get(severity, [])
+        for item in items:
+            all_findings.append({
+                "severity": item["severity"],
+                "confidence": item["confidence"],
+                "category": item["category"],
+                "message": item["message"],
+                "fix": item.get("fix", "")
+            })
+
+    suggested_fixes = []
+    for severity in ["critical", "major"]:
+        items = grouped.get(severity, [])
+        for item in items:
+            if item.get("fix"):
+                suggested_fixes.append(item["fix"])
+
+    overall = "Request Changes" if grouped.get("critical") or grouped.get("major") else "Comment"
+
+    return {
+        "repo": repo,
+        "pr_number": int(pr_number) if pr_number.isdigit() else pr_number,
+        "files_changed": changed_files,
+        "summary": f"Found {len(findings)} issue(s) across {len(grouped)} severity level(s). Review the findings below and address critical and major items before merge.",
+        "findings": all_findings,
+        "suggested_fixes": suggested_fixes,
+        "overall": overall
+    }
+
 def main():
-    if len(sys.argv) < 2:
-        print("Usage: generate-report.py <diff_file> [repo owner/repo] [pr_number]", file=sys.stderr)
-        sys.exit(1)
+    parser = argparse.ArgumentParser(description="Generate PR review report")
+    parser.add_argument("diff_file", help="Path to diff file")
+    parser.add_argument("repo", nargs="?", default="unknown/unknown", help="owner/repo")
+    parser.add_argument("pr_number", nargs="?", default="0", help="PR number")
+    parser.add_argument("--json", action="store_true", help="Output JSON instead of Markdown")
+    args = parser.parse_args()
 
-    diff_path = Path(sys.argv[1])
-    repo = sys.argv[2] if len(sys.argv) > 2 else "unknown/unknown"
-    pr_number = sys.argv[3] if len(sys.argv) > 3 else "0"
-
+    diff_path = Path(args.diff_file)
     diff_text = diff_path.read_text(encoding="utf-8", errors="replace")
-    report = render_report(repo, pr_number, diff_text)
-    print(report)
+
+    if args.json:
+        result = render_json(args.repo, args.pr_number, diff_text)
+        print(json.dumps(result, indent=2))
+    else:
+        report = render_report(args.repo, args.pr_number, diff_text)
+        print(report)
 
 if __name__ == "__main__":
     main()

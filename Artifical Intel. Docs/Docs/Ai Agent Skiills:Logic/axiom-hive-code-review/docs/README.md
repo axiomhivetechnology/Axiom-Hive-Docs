@@ -10,7 +10,7 @@
 | Document | Purpose |
 |----------|---------|
 | `README.md` | Installation, usage, customization, troubleshooting |
-| `SKILL.md` | Agent-facing instructions and workflow |
+| `SKILL.md` | Agent-facing instructions, system prompt, workflow |
 
 ## Compliance and Governance
 
@@ -23,6 +23,13 @@
 | `docs/security-policy.md` | Security controls and incident response |
 | `docs/red-team-report.md` | Red team testing template and findings |
 
+## Prompt Engineering and Safety
+
+| Document | Purpose |
+|----------|---------|
+| `docs/prompt-engineering.md` | Prompt architecture, structured output, positive reinforcement |
+| `docs/refusal-troubleshooting.md` | Refusal troubleshooting and false-positive mitigation |
+
 ## Skill Components
 
 | Document | Purpose |
@@ -30,9 +37,10 @@
 | `references/best-practices.md` | Language-agnostic and framework-specific review criteria |
 | `references/error-catalog.md` | Common bug patterns with detection heuristics |
 | `assets/severity-rubric.json` | Scoring rules for automated analysis |
-| `assets/review-template.md` | Output template for structured reviews |
+| `assets/review-template.md` | Output template for structured Markdown reviews |
+| `assets/review-schema.json` | JSON Schema for structured output mode |
 | `scripts/analyze-pr.sh` | Bash script: fetch PR diff via `gh` CLI |
-| `scripts/generate-report.py` | Python script: score diff and generate Markdown report |
+| `scripts/generate-report.py` | Python script: score diff and generate Markdown or JSON report |
 
 ## External References
 

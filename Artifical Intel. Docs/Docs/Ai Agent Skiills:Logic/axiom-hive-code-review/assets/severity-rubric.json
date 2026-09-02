@@ -1,0 +1,87 @@
+{
+  "severity_levels": ["critical", "major", "minor", "info", "suggestion"],
+  "confidence_levels": ["high", "medium", "low"],
+  "effort_levels": ["trivial", "easy", "medium", "hard"],
+  "patterns": [
+    {
+      "pattern": "password\\s*=\\s*['\"][^'\"]+['\"]",
+      "severity": "critical",
+      "confidence": "high",
+      "category": "security",
+      "message": "Hardcoded password detected",
+      "fix": "Move credential to environment variable or secrets manager"
+    },
+    {
+      "pattern": "api_key\\s*=\\s*['\"][^'\"]+['\"]",
+      "severity": "critical",
+      "confidence": "high",
+      "category": "security",
+      "message": "Hardcoded API key detected",
+      "fix": "Move credential to environment variable or secrets manager"
+    },
+    {
+      "pattern": "SELECT .* FROM .* WHERE .* \\+ .*",
+      "severity": "critical",
+      "confidence": "high",
+      "category": "security",
+      "message": "Potential SQL injection via string concatenation",
+      "fix": "Use parameterized queries or ORM filters"
+    },
+    {
+      "pattern": "f['\"]SELECT .*\\{.*\\}.*",
+      "severity": "critical",
+      "confidence": "medium",
+      "category": "security",
+      "message": "Potential SQL injection via f-string",
+      "fix": "Use parameterized queries or ORM filters"
+    },
+    {
+      "pattern": "def .*=\\[\\]",
+      "severity": "major",
+      "confidence": "high",
+      "category": "logic",
+      "message": "Mutable default argument",
+      "fix": "Use None as default and initialize inside function"
+    },
+    {
+      "pattern": "for .+ in .+:\n.*(SELECT|INSERT|UPDATE|DELETE|fetch|execute)",
+      "severity": "major",
+      "confidence": "medium",
+      "category": "performance",
+      "message": "Potential N+1 query in loop",
+      "fix": "Batch fetch with WHERE IN or eager loading"
+    },
+    {
+      "pattern": "time\\.sleep\\(",
+      "severity": "major",
+      "confidence": "medium",
+      "category": "performance",
+      "message": "Blocking sleep in async or request path",
+      "fix": "Use asyncio.sleep or move to background task"
+    },
+    {
+      "pattern": "read\\(\\)|readlines\\(\\)",
+      "severity": "minor",
+      "confidence": "low",
+      "category": "performance",
+      "message": "Potential large file load into memory",
+      "fix": "Stream file with generator or chunked reader"
+    },
+    {
+      "pattern": "if .*:\n    if .*:\n        if .+:",
+      "severity": "minor",
+      "confidence": "medium",
+      "category": "style",
+      "message": "Deeply nested conditional (depth > 3)",
+      "fix": "Use early returns or guard clauses to flatten logic"
+    },
+    {
+      "pattern": "[^a-zA-Z0-9_]\\d{2,}[^a-zA-Z0-9_]",
+      "severity": "minor",
+      "confidence": "low",
+      "category": "style",
+      "message": "Potential magic number",
+      "fix": "Extract to named constant with domain meaning"
+    }
+  ]
+}

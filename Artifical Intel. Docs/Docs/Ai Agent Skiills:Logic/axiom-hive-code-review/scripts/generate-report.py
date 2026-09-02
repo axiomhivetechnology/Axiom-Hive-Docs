@@ -10,8 +10,20 @@ def load_rubric():
     with open(RUBRIC_PATH, "r", encoding="utf-8") as f:
         return json.load(f)
 
+def filter_diff_content(diff_text: str) -> str:
+    lines = diff_text.splitlines()
+    content_lines = []
+    for line in lines:
+        stripped = line.rstrip("\n")
+        if stripped.startswith("+") and not stripped.startswith("+++"):
+            content_lines.append(stripped[1:])
+        elif stripped.startswith(" ") and not stripped.startswith("--- "):
+            content_lines.append(stripped[1:])
+    return "\n".join(content_lines)
+
 def score_diff(diff_text: str, rubric: dict) -> list:
     findings = []
+    content = filter_diff_content(diff_text)
     patterns = rubric.get("patterns", [])
     for entry in patterns:
         pattern = entry.get("pattern", "")
@@ -20,7 +32,7 @@ def score_diff(diff_text: str, rubric: dict) -> list:
         category = entry.get("category", "general")
         message = entry.get("message", "")
         fix = entry.get("fix", "")
-        if re.search(pattern, diff_text, re.IGNORECASE):
+        if re.search(pattern, content, re.IGNORECASE):
             findings.append({
                 "severity": severity,
                 "confidence": confidence,

@@ -23,6 +23,12 @@
 | `docs/security-policy.md` | Security controls and incident response |
 | `docs/red-team-report.md` | Red team testing template and findings |
 
+## Safety and Conduct
+
+| Document | Purpose |
+|----------|---------|
+| `docs/safety-specification.md` | AI Assistant Safety, Privacy, and Professional Conduct Specification |
+
 ## Prompt Engineering and Safety
 
 | Document | Purpose |

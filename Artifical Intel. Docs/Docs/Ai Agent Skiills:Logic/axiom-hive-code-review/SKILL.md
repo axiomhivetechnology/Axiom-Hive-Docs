@@ -77,3 +77,5 @@ Markdown review containing:
 - `assets/severity-rubric.json` — scoring rules
 - `assets/review-template.md` — output template
 - `assets/review-schema.json` — structured output schema
+- `docs/safety-specification.md` — safety, privacy, and professional conduct requirements
+- `docs/compliance.md` — GDPR, NIST, and EU AI Act compliance framework

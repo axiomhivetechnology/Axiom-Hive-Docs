@@ -3,7 +3,7 @@
 **Document ID:** AXIOM-SECURITY-001  
 **Effective Date:** 2026-09-02  
 **Product:** axiom-hive-code-review  
-**Owner:** axiom-hive
+**Owner:** Nicholas Michael Grossi
 
 ---
 
@@ -40,7 +40,7 @@ This policy defines security controls for the `axiom-hive-code-review` skill and
   - High: 30 days
   - Medium: 90 days
   - Low: Next release
-- Coordinated vulnerability disclosure: security@axiom-hive.example (to be configured).
+- Coordinated vulnerability disclosure: security@nicholasmgrossi.example (to be configured).
 
 ## 6. Incident Response
 

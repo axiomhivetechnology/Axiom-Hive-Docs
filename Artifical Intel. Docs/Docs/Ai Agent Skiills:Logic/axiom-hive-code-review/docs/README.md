@@ -8,14 +8,14 @@
 ## User-Facing Documentation
 
 | Document | Purpose |
-|----------|---------|
+| --- | --- |
 | `README.md` | Installation, usage, customization, troubleshooting |
 | `SKILL.md` | Agent-facing instructions, system prompt, workflow |
 
 ## Compliance and Governance
 
 | Document | Purpose |
-|----------|---------|
+| --- | --- |
 | `docs/compliance.md` | Full compliance framework (GDPR, NIST, EU AI Act) |
 | `docs/privacy-notice.md` | Privacy notice for users |
 | `docs/data-inventory.md` | Data categories, flows, and retention |
@@ -26,20 +26,20 @@
 ## Safety and Conduct
 
 | Document | Purpose |
-|----------|---------|
+| --- | --- |
 | `docs/safety-specification.md` | AI Assistant Safety, Privacy, and Professional Conduct Specification |
 
 ## Prompt Engineering and Safety
 
 | Document | Purpose |
-|----------|---------|
+| --- | --- |
 | `docs/prompt-engineering.md` | Prompt architecture, structured output, positive reinforcement |
 | `docs/refusal-troubleshooting.md` | Refusal troubleshooting and false-positive mitigation |
 
 ## Skill Components
 
 | Document | Purpose |
-|----------|---------|
+| --- | --- |
 | `references/best-practices.md` | Language-agnostic and framework-specific review criteria |
 | `references/error-catalog.md` | Common bug patterns with detection heuristics |
 | `assets/severity-rubric.json` | Scoring rules for automated analysis |
@@ -51,8 +51,8 @@
 ## External References
 
 | Document | Purpose |
-|----------|---------|
+| --- | --- |
 | Implementation Plan | `/Users/dux/.local/share/kilo/plans/1788320907150-monetizable-ai-coding-skills-repo.md` |
-| Agent Skills Spec | https://agentskills.io/specification |
-| MCP TypeScript SDK | https://techsy.io/en/blog/how-to-build-an-mcp-server |
+| Agent Skills Spec | [agentskills.io/specification](https://agentskills.io/specification) |
+| MCP TypeScript SDK | [techsy.io/en/blog/how-to-build-an-mcp-server](https://techsy.io/en/blog/how-to-build-an-mcp-server) |
 | Marketplace Listings | AgentPowers, Agensi, SkillExchange |

@@ -2,7 +2,7 @@
 
 **Document ID:** AXIOM-ROPA-001  
 **Effective Date:** 2026-09-02  
-**Controller:** axiom-hive  
+**Controller:** Nicholas Michael Grossi  
 **Product:** axiom-hive-code-review
 
 ---
@@ -30,7 +30,7 @@
 | **Purpose** | Detect abuse, prompt injection, and security incidents |
 | **Data Categories** | Logs (redacted), telemetry |
 | **Data Subjects** | Users of the skill |
-| **Recipients** | axiom-hive only |
+| **Recipients** | Nicholas Michael Grossi only |
 | **Transfers** | None (local processing) |
 | **Retention** | 30 days maximum |
 | **Lawful Basis** | Legitimate interests (Art. 6(1)(f) GDPR) |

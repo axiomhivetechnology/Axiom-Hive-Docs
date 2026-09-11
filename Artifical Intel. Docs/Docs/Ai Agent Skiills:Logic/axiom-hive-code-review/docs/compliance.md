@@ -3,7 +3,7 @@
 **Document ID:** AXIOM-COMPLIANCE-001  
 **Effective Date:** 2026-09-02  
 **Product:** axiom-hive-code-review  
-**Owner:** axiom-hive  
+**Owner:** Nicholas Michael Grossi  
 **Classification:** Public / Non-Sensitive  
 **Review Cycle:** Annual or upon material change
 
@@ -218,7 +218,7 @@ Mandatory controls:
 
 | Function | Subcategory | Implementation |
 |----------|-------------|----------------|
-| **Govern-P** | Privacy roles and responsibilities | Owner: axiom-hive; no DPO required for Phase 1 (no large-scale processing) |
+| **Govern-P** | Privacy roles and responsibilities | Owner: Nicholas Michael Grossi; no DPO required for Phase 1 (no large-scale processing) |
 | **Govern-P** | Privacy risk management strategy | Annual review of this document |
 | **Identify-P** | Data inventory and data flow mapping | See Section 9 (Data Handling Lifecycle) |
 | **Control-P** | Data minimization, consent/choice management | Skill requests only diff content; no optional tracking |

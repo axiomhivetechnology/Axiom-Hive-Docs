@@ -37,17 +37,18 @@ Copy the folder into your project's `.agents/skills/` directory.
 
 Ask your AI assistant:
 
-```
+```text
 Review PR 42 in owner/repo
 ```
 
 Or:
 
-```
+```text
 Analyze the diff for pull request #123 in octocat/Hello-World
 ```
 
 The skill will:
+
 1. Fetch the PR diff via `gh pr diff`
 2. Analyze changes against the severity rubric
 3. Return a structured Markdown report

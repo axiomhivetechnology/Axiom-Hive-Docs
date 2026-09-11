@@ -2,7 +2,7 @@
 
 **Effective Date:** 2026-09-02  
 **Product:** axiom-hive-code-review  
-**Controller:** axiom-hive
+**Controller:** Nicholas Michael Grossi
 
 ---
 
